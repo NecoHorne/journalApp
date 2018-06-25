@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">ALC Journal App</string>
+    <string name="google_auth_token_android">132879693983-o08b4ioekgss3i5q5rcelrm499pmoei7.apps.googleusercontent.com</string>
+    <string name="google_login">Google Login</string>
+    <string name="log_out_menu">Log Out</string>
+    <string name="list_text_title">Title</string>
+    <string name="list_text_date">Date</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="entry_title_text">Entry Title</string>
+    <string name="journal_entry_text">Journal entry</string>
+    <string name="entry_save_button_text">Save</string>
+</resources>
