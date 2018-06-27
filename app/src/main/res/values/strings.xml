@@ -11,4 +11,11 @@
     <string name="entry_title_text">Entry Title</string>
     <string name="journal_entry_text">Journal entry</string>
     <string name="entry_save_button_text">Save</string>
+    <string name="detail_menu_edit_string">Edit</string>
+    <string name="detail_menu_delete_string">Delete</string>
+    <string name="menu_add_save_string">Save</string>
+    <string name="main_menu_add_entry_string">Add Entry</string>
+    <string name="dialog_delete_message">Are you sure you want to delete this Entry?</string>
+    <string name="delete">DELETE</string>
+    <string name="cancel">CANCEL</string>
 </resources>

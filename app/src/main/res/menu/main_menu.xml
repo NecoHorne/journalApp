@@ -5,4 +5,9 @@
     <item
         android:id="@+id/menu_logout"
         android:title="@string/log_out_menu" />
+    <item
+        android:id="@+id/menu_main_add_entry"
+        android:icon="@drawable/ic_add_circle_white_24dp"
+        android:title="@string/main_menu_add_entry_string"
+        app:showAsAction="always" />
 </menu>

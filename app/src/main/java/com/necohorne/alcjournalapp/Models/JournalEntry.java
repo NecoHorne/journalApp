@@ -6,7 +6,7 @@ public class JournalEntry {
     private String Body;
     private String Date;
     private String UserId;
-
+    private int dataBasePos;
 
     public JournalEntry(String title, String body, String date, String userId) {
         Title = title;
@@ -45,5 +45,13 @@ public class JournalEntry {
 
     public void setUserId(String userId) {
         UserId = userId;
+    }
+
+    public int getDataBasePos() {
+        return dataBasePos;
+    }
+
+    public void setDataBasePos(int dataBasePos) {
+        this.dataBasePos = dataBasePos;
     }
 }
