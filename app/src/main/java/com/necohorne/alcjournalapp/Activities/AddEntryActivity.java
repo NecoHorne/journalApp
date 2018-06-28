@@ -3,6 +3,8 @@ package com.necohorne.alcjournalapp.Activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -48,6 +50,29 @@ public class AddEntryActivity extends AppCompatActivity {
         }
     }
 
+    //-----MENU-----//
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate( R.menu.add_entry_menu, menu );
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        switch (id) {
+            case R.id.add_menu_save:
+                if(!isEmpty(titleText.getText().toString()) && !isEmpty(entryBody.getText().toString())){
+                    saveJournalEntry();
+                } else {
+                    Toast.makeText(AddEntryActivity.this, "Fields can not be empty", Toast.LENGTH_SHORT).show();
+                }
+                break;
+        }
+        return super.onOptionsItemSelected( item );
+    }
+
     private void checkAuthenticationState() {
         //this method checks if the current user is signed in and authenticated via the firebase login.
         //If user is not signed in, activity will finish and take user back to sign in.
@@ -62,21 +87,8 @@ public class AddEntryActivity extends AppCompatActivity {
     }
 
     private void initViews(){
-        Button saveButton = findViewById(R.id.button_entry_save);
         titleText = findViewById(R.id.edit_text_entry_title);
         entryBody = findViewById(R.id.edit_text_entry_body);
-
-        saveButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                if(!isEmpty(titleText.getText().toString()) && !isEmpty(entryBody.getText().toString())){
-                    saveJournalEntry();
-                } else {
-                    Toast.makeText(AddEntryActivity.this, "Fields can not be empty", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
     }
 
     private void saveJournalEntry(){

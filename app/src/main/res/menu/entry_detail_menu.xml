@@ -12,4 +12,10 @@
         android:icon="@drawable/ic_delete_white_24dp"
         android:title="@string/detail_menu_delete_string"
         app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/detail_menu_save"
+        android:icon="@drawable/ic_save_white_24dp"
+        android:title="Save"
+        android:visible="false"
+        app:showAsAction="always" />
 </menu>

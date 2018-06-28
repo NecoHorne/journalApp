@@ -79,6 +79,7 @@ public class JournalDbHelper extends SQLiteOpenHelper{
         journalEntry.setDataBasePos(cursor.getInt(0));
 
         cursor.close();
+        db.close();
         return journalEntry;
     }
 
@@ -113,6 +114,7 @@ public class JournalDbHelper extends SQLiteOpenHelper{
             }while (cursor.moveToNext());
         }
         cursor.close();
+        db.close();
         return entryArrayListList;
 
     }

@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -29,10 +30,10 @@ public class EntryDetailActivity extends AppCompatActivity {
     private TextView date;
     private EditText editTitle;
     private EditText editBody;
-    private Button editSave;
     private boolean isEditing;
     private String mNewTitle;
     private String mNewBody;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,20 +73,8 @@ public class EntryDetailActivity extends AppCompatActivity {
         title.setVisibility(View.GONE);
         entryBody.setVisibility(View.GONE);
 
-        editSave = findViewById(R.id.button_edit_save);
-        editSave.setVisibility(View.VISIBLE);
+        invalidateOptionsMenu();
 
-        if(!isEmpty(editTitle.getText()) && !isEmpty(editBody.getText())){
-            editSave.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    mNewTitle = editTitle.getText().toString();
-                    mNewBody = editBody.getText().toString();
-                    new UpdateDb().execute();
-                    exitEdit();
-                }
-            });
-        }
     }
 
     private void exitEdit(){
@@ -94,7 +83,7 @@ public class EntryDetailActivity extends AppCompatActivity {
         editBody.setVisibility(View.GONE);
         title.setVisibility(View.VISIBLE);
         entryBody.setVisibility(View.VISIBLE);
-        editSave.setVisibility(View.GONE);
+        invalidateOptionsMenu();
     }
 
     private void deleteEntry(JournalEntry journalEntry) {
@@ -123,6 +112,16 @@ public class EntryDetailActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate( R.menu.entry_detail_menu, menu );
+
+        if(isEditing){
+            menu.findItem(R.id.detail_menu_delete).setVisible(false);
+            menu.findItem(R.id.detail_menu_edit).setVisible(false);
+            menu.findItem(R.id.detail_menu_save).setVisible(true);
+        }else {
+            menu.findItem(R.id.detail_menu_delete).setVisible(true);
+            menu.findItem(R.id.detail_menu_edit).setVisible(true);
+            menu.findItem(R.id.detail_menu_save).setVisible(false);
+        }
         return true;
     }
 
@@ -136,6 +135,12 @@ public class EntryDetailActivity extends AppCompatActivity {
                 break;
             case R.id.detail_menu_delete:
                 deleteEntry(mJournalEntry);
+                break;
+            case R.id.detail_menu_save:
+                mNewTitle = editTitle.getText().toString();
+                mNewBody = editBody.getText().toString();
+                new UpdateDb().execute();
+                exitEdit();
                 break;
         }
         return super.onOptionsItemSelected( item );
@@ -178,6 +183,7 @@ public class EntryDetailActivity extends AppCompatActivity {
             title.setText(mJournalEntry.getTitle());
             entryBody.setText(mJournalEntry.getBody());
             date.setText(mJournalEntry.getDate());
+            Toast.makeText(EntryDetailActivity.this, "Entry Updated!", Toast.LENGTH_SHORT).show();
         }
     }
 }
