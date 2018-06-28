@@ -38,6 +38,8 @@ Set up test coverage to report to a service e.g. Code Climate
 Install the APK on an android phone or emulator to run application.
 Straight forward journal/note taking app.
 
+in the project directory navigate to app/release/app-release.apk for the signed release apk file of the app.
+
 ### Prerequisites
 
 Your device will need to run Android Marshmallow (Android SDK 23) or above in order to run the APP.
