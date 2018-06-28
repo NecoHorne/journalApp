@@ -8,7 +8,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -22,7 +21,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    private String TAG = "MainActivity";
+//    private String TAG = "MainActivity";
     private Intent mLogOutIntent;
     private JournalEntryRecyclerAdapter mAdapter;
 
@@ -54,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void checkAuthenticationState() {
         //this method checks if the current user is signed in and authenticated via the firebase login.
-        //If user is not signed in main activity will finish and take user back to sign in.
+        //If user is not signed in, activity will finish and take user back to sign in.
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user == null) {
@@ -76,7 +75,6 @@ public class MainActivity extends AppCompatActivity {
         switch (id) {
             case R.id.menu_logout:
                 logOut();
-                startActivity( new Intent( this, SignInActivity.class ) );
                 break;
             case R.id.menu_main_add_entry:
                 startActivity(new Intent(MainActivity.this, AddEntryActivity.class));

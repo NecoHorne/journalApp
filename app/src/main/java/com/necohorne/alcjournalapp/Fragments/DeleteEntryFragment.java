@@ -20,7 +20,7 @@ import com.necohorne.alcjournalapp.R;
 
 public class DeleteEntryFragment extends DialogFragment {
 
-    private final String TAG = "DeleteEntryFragment";
+//    private final String TAG = "DeleteEntryFragment";
     private View mView;
     private Context mContext;
 
@@ -30,9 +30,6 @@ public class DeleteEntryFragment extends DialogFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
         mPosition = getArguments().getInt(Constants.DATABASE_POSITION);
-        if (mPosition >= 0){
-            Log.d( TAG, "Key = " + mPosition);
-        }
     }
 
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

@@ -21,6 +21,9 @@
         </activity>
         <activity android:name=".Activities.EntryDetailActivity" />
         <activity android:name=".Activities.AddEntryActivity"></activity>
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="639de560ac89f43146f7e02b39ea1fde04281360" />
     </application>
 
 </manifest>

@@ -9,7 +9,6 @@ import android.database.sqlite.SQLiteOpenHelper;
 import com.necohorne.alcjournalapp.Models.JournalEntry;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class JournalDbHelper extends SQLiteOpenHelper{
 
@@ -78,6 +77,8 @@ public class JournalDbHelper extends SQLiteOpenHelper{
                 cursor.getString(3),
                 cursor.getString(4 ));
         journalEntry.setDataBasePos(cursor.getInt(0));
+
+        cursor.close();
         return journalEntry;
     }
 
@@ -111,6 +112,7 @@ public class JournalDbHelper extends SQLiteOpenHelper{
 
             }while (cursor.moveToNext());
         }
+        cursor.close();
         return entryArrayListList;
 
     }

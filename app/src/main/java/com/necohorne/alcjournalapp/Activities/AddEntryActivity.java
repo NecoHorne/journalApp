@@ -24,7 +24,6 @@ import static android.text.TextUtils.isEmpty;
 
 public class AddEntryActivity extends AppCompatActivity {
 
-    private String TAG = "AddEntryActivity";
     private EditText titleText;
     private EditText entryBody;
 
@@ -35,6 +34,7 @@ public class AddEntryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_entry);
         initViews();
+        checkAuthenticationState();
         saveState = false;
     }
 
@@ -45,6 +45,19 @@ public class AddEntryActivity extends AppCompatActivity {
         } else {
             ExitWithoutSaveFragment exitWithoutSaveFragment = new ExitWithoutSaveFragment();
             exitWithoutSaveFragment.show(getFragmentManager(), "dialog_exit_without_save" );
+        }
+    }
+
+    private void checkAuthenticationState() {
+        //this method checks if the current user is signed in and authenticated via the firebase login.
+        //If user is not signed in, activity will finish and take user back to sign in.
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user == null) {
+            Intent mLogOutIntent = new Intent( AddEntryActivity.this, SignInActivity.class );
+            mLogOutIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK );
+            startActivity( mLogOutIntent );
+            finish();
         }
     }
 

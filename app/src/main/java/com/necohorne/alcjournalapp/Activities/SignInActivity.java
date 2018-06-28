@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.crashlytics.android.Crashlytics;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -22,10 +23,11 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.necohorne.alcjournalapp.R;
+import io.fabric.sdk.android.Fabric;
 
 public class SignInActivity extends AppCompatActivity {
 
-    private static final String TAG = "SignInActivity";
+//    private static final String TAG = "SignInActivity";
 
     //-----Firebase-----//
     private FirebaseUser mUser;
@@ -41,11 +43,11 @@ public class SignInActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Fabric.with(this, new Crashlytics());
         setContentView(R.layout.activity_sign_in);
         mAuth = FirebaseAuth.getInstance();
         setupFirebaseAuth();
         googleLogin();
-
     }
 
     @Override
@@ -76,7 +78,7 @@ public class SignInActivity extends AppCompatActivity {
                         startActivity(new Intent(SignInActivity.this, MainActivity.class));
                         finish();
                     } else {
-                        Log.d(TAG, "onAuthStateChanged: not signed in");
+//                        Log.d(TAG, "onAuthStateChanged: not signed in");
                     }
                 }
             }
@@ -91,7 +93,7 @@ public class SignInActivity extends AppCompatActivity {
                 .build();
 
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
-        Button signInButton = (Button) findViewById(R.id.google_login_button);
+        Button signInButton = findViewById(R.id.google_login_button);
 
         signInButton.setOnClickListener( new View.OnClickListener() {
             @Override
@@ -114,14 +116,14 @@ public class SignInActivity extends AppCompatActivity {
                 firebaseAuthWithGoogle(account);
             } catch (ApiException e) {
                 // Google Sign In failed, update UI appropriately
-                Log.w(TAG, "Google sign in failed", e);
+//                Log.w(TAG, "Google sign in failed", e);
                 // ...
             }
         }
     }
 
     private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
-        Log.d(TAG, "firebaseAuthWithGoogle:" + acct.getId());
+//        Log.d(TAG, "firebaseAuthWithGoogle:" + acct.getId());
 
         AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
         mAuth.signInWithCredential(credential)
@@ -130,12 +132,12 @@ public class SignInActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
-                            Log.d(TAG, "signInWithCredential:success");
+//                            Log.d(TAG, "signInWithCredential:success");
                             FirebaseUser user = mAuth.getCurrentUser();
 
                         } else {
                             // If sign in fails, display a message to the user.
-                            Log.w(TAG, "signInWithCredential:failure", task.getException());
+//                            Log.w(TAG, "signInWithCredential:failure", task.getException());
                             Toast.makeText(SignInActivity.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
                         }
                     }

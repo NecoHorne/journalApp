@@ -2,8 +2,8 @@ package com.necohorne.alcjournalapp.Activities;
 
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,8 +18,6 @@ import com.necohorne.alcjournalapp.Data.JournalDbHelper;
 import com.necohorne.alcjournalapp.Fragments.DeleteEntryFragment;
 import com.necohorne.alcjournalapp.Models.JournalEntry;
 import com.necohorne.alcjournalapp.R;
-
-import java.util.ArrayList;
 
 import static android.text.TextUtils.isEmpty;
 
@@ -110,7 +108,7 @@ public class EntryDetailActivity extends AppCompatActivity {
 
     private void checkAuthenticationState() {
         //this method checks if the current user is signed in and authenticated via the firebase login.
-        //If user is not signed in main activity will finish and take user back to sign in.
+        //If user is not signed in, activity will finish and take user back to sign in.
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user == null) {
@@ -134,7 +132,6 @@ public class EntryDetailActivity extends AppCompatActivity {
 
         switch (id) {
             case R.id.detail_menu_edit:
-                //TODO write database edit code
                 editMode();
                 break;
             case R.id.detail_menu_delete:

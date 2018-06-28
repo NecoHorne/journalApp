@@ -36,33 +36,31 @@ Set up test coverage to report to a service e.g. Code Climate
 ## Getting Started
 
 Install the APK on an android phone or emulator to run application.
+Straight forward journal/note taking app.
 
 ### Prerequisites
 
 Your device will need to run Android Marshmallow (Android SDK 23) or above in order to run the APP.
-The app uses Firebase for login, ensure device is connected to the Internet.
-
+The app uses a google account for login, ensure device is connected to the Internet.
 
 ### Installing
 
-//
+Install APK file on any android device or emulator running Android 6.0 (Marshmallow) or above.
 
 ## Built With
 
-//
-
-
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+Android Studio using Java.
+Firebase Authentication.
+Firebase / Fabric Crashlytics.
+Firebase Analytics.
 
 ## Authors
 
-* **Neco Horne** - *Initial work*
+**Neco Horne** - *Initial work*
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the MIT License
 
 ## Acknowledgments
 
